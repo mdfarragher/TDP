@@ -1,28 +1,20 @@
-# Module 2 setup
+# Module 2 Lab setup
 
-## Pre-requisites for deployment
+## Prerequisites
 
-The following requirements must be met before the deployment:
+You'll need the following to perform these deployment steps:
 
-- A resource group (this will be provided during the deployment process).
-
-    >**IMPORTANT**
-    >
-    >In case you didn't create the resource group yourself, make sure your account has the `Owner` role on the resource group.
-    >
-    >Also, your account (i.e. the Azure AD account used to deploy the Azure Synapse Analytics workspace) must have permissions to create new resource groups in the subscription (this is required because Synapse Analytics requires an additional resource group to keep various hidden artifacts; this resource group is created during the deployment process).
-
-- A unique suffix to be used when generating the name of the workspace. All workspaces deployed using the templates in this repo are named `asagaworkspace<unique_suffix>`, where `<unique_suffix>` gets replaced with the value you provide. Make sure the unique suffix is specific enough to avoid potential naming collisions (i.e. avoid using common values like `01`, `1`, `test`, etc.).
-- A password for the SQL admin account of the workspace. Make sure you save the password in a secure location (like a password manager) as you will need to use it later.
 - A GitHub account to access the GitHub repository.
 
 ## Lab software requirements
 
-> Azure Data Studio can be installed on the [lab VM](../../README.md#lab-vm-for-students) for this course.
-
-Install the following on your lab computer or VM:
+Install the following on your lab computer:
 
 - [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15)
+
+## Create a Resource Group
+
+In the Azure Portal, navigate to the Resource Groups overview page and create a new resource group. Give the group the following name: `techionista-dp203-m2`.
 
 ## Deploy Azure resources
 
@@ -32,10 +24,9 @@ Click the `Deploy to Azure` button below to start the deployment process.
 
 You should see next the `Custom deployment` screen where you need to provide the following (see [Pre-requisites for deployment](#pre-requisites-for-deployment) above for details):
 
-- The resource group where the Synapse Analytics workspace will be deployed (create a new one if needed). **If you are using a hosted lab environment**, use the existing resource group.
-- The unique suffix used to generate the name of the workspace (**NOTE**: Make sure this value has a **maximum** length of **9 characters**).
-- The password for the SQL Administrator accounts (both the Azure SQL Database source and Synapse Analytics dedicated SQL pool destination).
-- **(Optional)** change the source Azure SQL Database collation setting if desired.
+- The resource group `techionista-dp203-m2` where the Synapse Analytics workspace will be deployed.
+- A unique suffix used to generate unique names during deployment. Type a combination of your initials and the current date (for example `mdf1708`), but make sure your suffix does not exceed a **maximum** length of **9 characters**). Remember this suffix because you will need it later.
+- The password for the SQL Administrator account. Type a unique password and remember it because you will need it during the labs.
 
 Select `Review + create` to validate the settings.
 
@@ -45,4 +36,4 @@ Once the validation is passed, select `Create` to start the deployment. You shou
 
 ![Synapse Analytics workspace deployment progress](media/asaworkspace-deploy-progress.png)
 
-Wait until the deployment completes successfully before proceeding to the next step.
+Wait until the deployment completes successfully.

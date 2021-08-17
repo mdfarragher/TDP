@@ -1,7 +1,5 @@
 # Module 1 Lab 2 setup - step 1
 
-To complete this lab, you will need to load some test data into the Azure Synapse Analytics workspace you set up earlier.
-
 ## Prerequisites
 
 You'll need the following to perform the deployment steps for the DP-203 training:
@@ -61,7 +59,7 @@ You should see next the `Custom deployment` screen where you need to provide the
 
 - The resource group where the Synapse Analytics workspace will be deployed. Select `techionista-dp203-m1`.
 - A unique suffix used to generate unique names during deployment. Type a combination of your initials and the current date (for example `mdf1708`), but make sure your suffix does not exceed a **maximum** length of **9 characters**). Remember this suffix because you will need it later.
-- The password for the SQL Administrator account. Remember this password because you will need it during the labs.
+- The password for the SQL Administrator account. Type a unique password and remember it because you will need it during the labs.
 
 Select `Review + create` to validate the settings.
 
