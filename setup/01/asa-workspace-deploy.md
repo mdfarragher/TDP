@@ -14,11 +14,11 @@ You'll need the following to perform the deployment steps for the DP-203 trainin
 
 2. On the Azure Portal home screen, select the **Menu** button on the top-left corner **(1)**. Hover over **Resource groups (2)**, then select **+ Create (3)**.
 
-    ![The Create button is highlighted.](media/new-resourcegroup.png "Create resource group")
+    ![The Create button is highlighted.](../04/media/new-resourcegroup.png "Create resource group")
 
 3. On the **Create a resource group** screen, select your Azure Pass Subscription. For the Region, select `West Europe`. For Resource group, enter `techionista-dp203-m1b` and select the **Review + Create** button.
 
-    ![The Create a resource group form is displayed.](media/bhol_resourcegroupform.png)
+    ![The Create a resource group form is displayed.](../04/media/bhol_resourcegroupform.png)
 
 4. Select the **Create** button once validation has passed.
 

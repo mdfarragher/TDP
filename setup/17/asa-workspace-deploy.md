@@ -8,9 +8,19 @@ The following requirements must be met before the deployment:
 - A Power BI Pro subscription. In case you do not have a paid Power BI Pro subscription, you can get a 60 days trial by signing in to `https://powerbi.com` with your account and selecting `Try free`.
 - A Power BI Pro workspace (for details about creating a workspace in Power BI, see [Create the new workspaces in Power BI](https://docs.microsoft.com/en-us/azure/synapse-analytics/quickstart-power-bi)).
 
-## Create a Resource Group
+### Create a Resource Group
 
-In the Azure Portal, navigate to the Resource Groups overview page and create a new resource group. Give the group the following name: `techionista-dp203-m17`.
+1. Log into the [Azure Portal](https://portal.azure.com) using your Azure Pass.
+
+2. On the Azure Portal home screen, select the **Menu** button on the top-left corner **(1)**. Hover over **Resource groups (2)**, then select **+ Create (3)**.
+
+    ![The Create button is highlighted.](../04/media/new-resourcegroup.png "Create resource group")
+
+3. On the **Create a resource group** screen, select your Azure Pass Subscription. For the Region, select `West Europe`. For Resource group, enter `techionista-dp203-m17` and select the **Review + Create** button.
+
+    ![The Create a resource group form is displayed.](../04/media/bhol_resourcegroupform.png)
+
+4. Select the **Create** button once validation has passed.
 
 ## Create a File Share
 
