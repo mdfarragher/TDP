@@ -1,18 +1,18 @@
-# Deploy resources for Lab 01
+# Module 17 Lab setup - step 2
 
-## Lab VM
+## Lab software requirements
 
-> Power BI Desktop can be installed on the [lab VM](../../README.md#lab-vm-for-students) for this course.
+Install the following on your lab computer:
 
-Install [Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=58494) on your lab computer or VM.
+- [Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=58494).
 
-## Deploy services for the lab
+## Deploy Azure resources
 
 Click the `Deploy to Azure` button below to start the deployment process.
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fsolliancenet%2Fmicrosoft-data-engineering-ilt-deploy%2Fmain%2Fsetup%2F01%2Farm%2Fasaga-workspace-lab-01.json%3Ftoken%3DAA2FKXX5X2DEGNWNV6LNIT27ZYETC)
 
-You should see next the `Custom deployment` screen where you need to provide the resource group where the Synapse Analytics workspace was deployed (see [Pre-requisites for deployment](./asa-workspace-deploy.md#pre-requisites-for-deployment) for details):
+You should see next the `Custom deployment` screen where you need to provide the `techionista-dp203-m17` resource group where the Synapse Analytics workspace was deployed.
 
 Select `Review + create` to validate the settings.
 
@@ -30,29 +30,29 @@ Once the Cloud Shell instance becomes available, **run ```az login```** to make 
 
 ![Cloud Shell login](media/cloudshell-setup-01.png)
 
-Run the following command to make sure the Git repository has been correctly cloned (see [Run the global setup script in Cloud Shell](./asa-workspace-deploy.md#run-the-global-setup-script-in-cloud-shell) for details):
+Run the following command to make sure the Git repository has been correctly cloned:
 
 ```cmd
 dir
 ```
 
-Change your current directory using
+Change your current directory using:
 
 ```cmd
 cd asa/setup/17/automation
 ```
 
-and then start the setup script using
+and then start the setup script using:
 
 ```powershell
 .\lab-01-setup.ps1
 ```
 
-Make sure the selected subscription is the one that contains the resource group where you deployed the Synapse Analytics workspace:
+Make sure the selected subscription is your Azure Pass:
 
 ![Cloud Shell select subscription](media/cloudshell-setup-03.png)
 
-Enter the name of the resource group where you deployed the Synapse Analytics workspace:
+Enter the name of the `techionista-dp203-m17` resource group where you deployed the Synapse Analytics workspace:
 
 ![Cloud Shell select resource group](media/cloudshell-setup-04.png)
 
