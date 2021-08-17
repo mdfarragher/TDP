@@ -8,16 +8,26 @@ You'll need the following to perform the deployment steps for the DP-203 trainin
 - A Power BI Pro subscription. In case you do not have a paid Power BI Pro subscription, you can get a 60 days trial by signing in to `https://powerbi.com` with your account and selecting `Try free`.
 - A Power BI Pro workspace (for details about how to set up a workspace in Power BI, see [Create the new workspaces in Power BI](https://docs.microsoft.com/en-us/azure/synapse-analytics/quickstart-power-bi)).
 
-## Create a Resource Group
+### Create a Resource Group
 
-In the Azure Portal, navigate to the Resource Groups overview page and create a new resource group. Give the group the following name: `techionista-dp203-m1`.
+1. Log into the [Azure Portal](https://portal.azure.com) using your Azure Pass.
+
+2. On the Azure Portal home screen, select the **Menu** button on the top-left corner **(1)**. Hover over **Resource groups (2)**, then select **+ Create (3)**.
+
+    ![The Create button is highlighted.](media/new-resourcegroup.png "Create resource group")
+
+3. On the **Create a resource group** screen, select your Azure Pass Subscription. For the Region, select `West Europe`. For Resource group, enter `techionista-dp203-m1b` and select the **Review + Create** button.
+
+    ![The Create a resource group form is displayed.](media/bhol_resourcegroupform.png)
+
+4. Select the **Create** button once validation has passed.
 
 ## Create a File Share
 
-In the Azure Portal, navigate to the `techionista-dp203-m1` resource group and create a new storage account. Provide the following information:
+In the Azure Portal, navigate to the `techionista-dp203-m1b` resource group and create a new storage account. Provide the following information:
 
 - **Subscription**: Choose your Azure Pass subscription.
-- **Resource Group**: Select `techionista-dp203-m1`. 
+- **Resource Group**: Select `techionista-dp203-m1b`. 
 - **Region**: Select `West Europe`.
 
 Leave all other fields at their default settings and create the storage account. 
@@ -37,7 +47,7 @@ Select your Azure Pass subscription under `Subscription` if it's not already sel
 Provide values for the following fields:
 
 - **Cloud Shell region**: Select `West Europe`.
-- **Resource group**: select `Use existing` and then select `techionista-dp203-m1` from the list.
+- **Resource group**: select `Use existing` and then select `techionista-dp203-m1b` from the list.
 - **Storage account**: select `Use existing` and then select the storage account you created above.
 - **File share**: select `Use existing` and then select the `cloud-shell-fileshare` file share you created above.
 
@@ -57,7 +67,7 @@ Click the `Deploy to Azure` button below to start the deployment process.
 
 You should see next the `Custom deployment` screen where you need to provide the following:
 
-- The resource group where the Synapse Analytics workspace will be deployed. Select `techionista-dp203-m1`.
+- The resource group where the Synapse Analytics workspace will be deployed. Select `techionista-dp203-m1b`.
 - A unique suffix used to generate unique names during deployment. Type a combination of your initials and the current date (for example `mdf1708`), but make sure your suffix does not exceed a **maximum** length of **9 characters**). Remember this suffix because you will need it later.
 - The password for the SQL Administrator account. Type a unique password and remember it because you will need it during the labs.
 
@@ -73,7 +83,7 @@ Wait until the deployment completes successfully before proceeding to the next s
 
 ## Tag your resource group with the unique suffix
 
-In the Azure Portal, navigate to the `techionista-dp203-m1` resource group.
+In the Azure Portal, navigate to the `techionista-dp203-m1b` resource group.
 
 Select the `Tags` section and add a new tag named `DeploymentId`. Copy the unique suffix you used earlier (for example: `mdf1708`) and paste it as the value of the tag. Then select `Apply` to save it.
 
@@ -83,7 +93,7 @@ The deployment of your Synapse Analytics workspace is now complete. Next, you wi
 
 ## Clone a GitHub repo in Cloud Shell
 
-In the Azure Portal, navigate to the `techionista-dp203-m1` resource group and start a Cloud Shell instance.
+In the Azure Portal, navigate to the `techionista-dp203-m1b` resource group and start a Cloud Shell instance.
 
 Once the Cloud Shell instance becomes available, **run ```az login```** to make sure the correct account and subscription context are set:
 
@@ -117,7 +127,7 @@ Make sure the selected subscription is your Azure Pass:
 
 ![Cloud Shell select subscription](media/cloudshell-setup-03.png)
 
-Enter the name of the `techionista-dp203-m1` resource group where you deployed the Synapse Analytics workspace:
+Enter the name of the `techionista-dp203-m1b` resource group where you deployed the Synapse Analytics workspace:
 
 ![Cloud Shell select resource group](media/cloudshell-setup-04.png)
 
@@ -127,7 +137,7 @@ The process should take 5 to 10 minutes to finish. Wait until the setup script i
 
 ## Connect Azure Synapse Analytics to Power BI
 
-In the Azure Portal, navigate to your `techionista-dp203-m1` resource group, open the Synapse workspace resource (which should be named `asagaworkspace<unque_suffix>` where `<unique_suffix>` is the one you specified when creating the workspace), and then open Synapse Studio.
+In the Azure Portal, navigate to your `techionista-dp203-m1b` resource group, open the Synapse workspace resource (which should be named `asagaworkspace<unque_suffix>` where `<unique_suffix>` is the one you specified when creating the workspace), and then open Synapse Studio.
 
 In Synapse Studio, select the `Manage` hub on the left side, select `Linked Services`, and then select `+ New` to start creating a new linked service. Select `Connect to Power BI` to start configuring the linked service.
 

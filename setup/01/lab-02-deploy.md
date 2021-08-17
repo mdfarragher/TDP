@@ -10,7 +10,7 @@ Click the following button to open the deployment template in the Azure portal.
 
 You should see next the `Custom deployment` screen where you need to provide the following information:
 
-   - **Resource Group**: Provide the same resource group you used earlier to install Azure Synapse Analytics. 
+   - **Resource Group**: Provide the resource group name `techionista-dp203-m1b`, the same one you used earlier to install Azure Synapse Analytics. 
    - **Region**: Select `West Europe`.
 
 Select `Review + create` to validate the settings.

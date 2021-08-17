@@ -11,7 +11,7 @@ To complete this lab, you will need to deploy an Azure Databricks workspace in y
 1. Provide the required values to create your Azure Databricks workspace:
 
    - **Subscription**: Choose your Azure Pass subscription.
-   - **Resource Group**: Select **Create new** and provide a name for the new resource group. 
+   - **Resource Group**: Select **Create new** and provide the name `techionista-dp203-m1a` for the new resource group. 
    - **Region**: Select `West Europe`.
    - **Workspace Name**: Enter a unique name for your workspace.
    - **Enable No Public Ip**: Set to `false`.
