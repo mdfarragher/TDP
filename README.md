@@ -1,84 +1,61 @@
-# Microsoft Data Engineering four-day instructor-led training deployment
+# Setup instructions for DP-203 lab environment
 
-This repo contains manual and automated deployment steps for lab environments used by the Microsoft Data Engineering four-day ILT training curriculum.
+This repository contains manual and automated deployment steps to set up the  lab environments used by the Microsoft DP-203 training.
 
-- [Microsoft Data Engineering four-day instructor-led training deployment](#microsoft-data-engineering-four-day-instructor-led-training-deployment)
-  - [Module directory](#module-directory)
-  - [Lab VM for students](#lab-vm-for-students)
-  - [Modules that can share the same Synapse workspace](#modules-that-can-share-the-same-synapse-workspace)
-  - [Modules that can share the same Azure Databricks workspace](#modules-that-can-share-the-same-azure-databricks-workspace)
+## Lab setup
 
-## Module directory
+**Module 1 Lab 1**: Explore compute and storage options for data engineering workloads
 
-- Module 1 - Explore compute and storage options for data engineering workloads
-  - [Lab 01 setup instructions](setup/01/lab-01-setup.md)
-  - [Lab 02 setup instructions - step 1 of 2](setup/01/asa-workspace-deploy.md)
-  - [Lab 02 setup instructions - step 2 of 2](setup/01/lab-02-deploy.md)
-- Module 2 - Design and Implement the serving layer
-  - [Lab setup instructions](setup/02/README.md)
-- Module 3 - Data engineering considerations for source files
-  - No lab setup
-- Module 4 - Run interactive queries using serverless SQL pools
-  - [Lab setup instructions](setup/04/README.md)
-- Module 5 - Explore, transform, and load data into the Data Warehouse using Apache Spark
-  - [Lab setup instructions](setup/04/README.md)
-- Module 6 - Data exploration and transformation in Azure Databricks
-  - [Lab setup instructions](setup/06/lab-01-setup.md)
-- Module 7 - Ingest and load data into the Data Warehouse
-  - [Lab setup instructions](setup/04/README.md)
-- Module 8 - Transform data with Azure Data Factory or Azure Synapse Pipelines
-  - [Lab setup instructions](setup/04/README.md)
-- Module 9 - Integrate data from notebooks with Azure Data Factory or Azure Synapse Pipelines
-  - [Lab setup instructions](setup/04/README.md)
-- Module 10 - Optimize query performance with dedicated SQL pools in Azure Synapse
-  - [Lab setup instructions](setup/04/README.md)
-- Module 11 - Analyze and optimize Data Warehouse storage
-  - [Lab setup instructions](setup/04/README.md)
-- Module 12 - Support Hybrid Transactional Analytical Processing (HTAP) with Azure Synapse Link
-  - [Lab setup instructions](setup/04/README.md)
-- Module 13 - End-to-end security with Azure Synapse Analytics
-  - [Lab setup instructions](setup/04/README.md)
-- Module 14 - Real-time stream processing with Stream Analytics
-  - [Lab setup instructions](setup/14/README.md)
-- Module 15 - Create a stream processing solution with Event Hubs and Azure Databricks
-  - [Lab setup instructions](setup/15/lab-01-setup.md)
-- Module 16 - Build reports using Power BI integration with Azure Synapse Analytics
-  - [Lab setup instructions](setup/04/README.md)
-- Module 17 - Perform integrated Machine Learning processes in Azure Synapse Analytics
-  - [Lab setup instructions - step 1 of 2](setup/17/asa-workspace-deploy.md)
-  - [Lab setup instructions - step 2 of 2](setup/17/lab-01-deploy.md)
+[Module 1 Lab 1 setup](setup/01/lab-01-setup.md)
 
-## Lab VM for students
+**Module 1 Lab 2**: Explore compute and storage options for data engineering workloads
 
-There are three modules that require a lab VM. All others only require a web browser for the students. The lab VM can be used for these modules (Modules 2, 16, and 17).
+[Module 1 Lab 2 setup - step 1 of 2](setup/01/asa-workspace-deploy.md) \
+[Module 1 Lab 2 setup - step 2 of 2](setup/01/lab-02-deploy.md)
 
-This VM can be a standard Windows 10 virtual machine, and needs to be pre-loaded with the following software:
+**Module 2**: Design and Implement the serving layer
 
-1. [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15) (for Module 2)
-2. [Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=58494) (for Modules 16 & 17)
+[Module 2 Lab setup](setup/02/README.md)
 
-## Modules that can share the same Synapse workspace
+**Module 3**: Data engineering considerations for source files
 
-- Synapse workspace named **asagaworkspaceSUFFIX** (where SUFFIX is a unique id provided during setup):
-  - Module 1
-  - Module 17
-- Synapse workspace named **asaworkspaceSUFFIX**:
-  - Module 4
-  - Module 5
-  - Module 7
-  - Module 8
-  - Module 9
-  - Module 10
-  - Module 11
-  - Module 12
-  - Module 13
-  - Module 16
-- Requires own Synapse workspace (not shared):
-  - Module 2
-  - Module 14
+_Module 3 has no lab_
 
-## Modules that can share the same Azure Databricks workspace
+**Module 4**: Run interactive queries using serverless SQL pools
 
-- Module 1
-- Module 6
-- Module 15
+[Module 4 Lab setup](setup/04/README.md)
+
+**Module 5**: Explore, transform, and load data into the Data Warehouse using Apache Spark
+
+_Module 5 uses the lab environment you set up for module 4._
+
+**Module 6**: Data exploration and transformation in Azure Databricks
+
+[Module 6 Lab setup](setup/06/lab-01-setup.md)
+
+**Module 7**: Ingest and load data into the Data Warehouse \
+**Module 8**: Transform data with Azure Data Factory or Azure Synapse Pipelines \
+**Module 9**: Integrate data from notebooks with Azure Data Factory or Azure Synapse Pipelines \
+**Module 10**: Optimize query performance with dedicated SQL pools in Azure Synapse \
+**Module 11**: Analyze and optimize Data Warehouse storage \
+**Module 12**: Support Hybrid Transactional Analytical Processing (HTAP) with Azure Synapse Link \
+**Module 13**: End-to-end security with Azure Synapse Analytics
+
+_Modules 7, 8, 9, 10, 11, 12 and 13 use the lab environment you set up for module 4._
+
+**Module 14**: Real-time stream processing with Stream Analytics
+
+[Module 14 Lab setup](setup/14/README.md)
+
+**Module 15**: Create a stream processing solution with Event Hubs and Azure Databricks
+
+[Module 15 Lab setup](setup/15/lab-01-setup.md)
+
+**Module 16**: Build reports using Power BI integration with Azure Synapse Analytics
+
+_Module 16 uses the lab environment you set up for module 4._
+
+**Module 17**: Perform integrated Machine Learning processes in Azure Synapse Analytics
+
+[Module 17 Lab setup - step 1 of 2](setup/17/asa-workspace-deploy.md) \
+[Module 17 Lab setup - step 2 of 2](setup/17/lab-01-deploy.md)

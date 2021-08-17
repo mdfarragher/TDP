@@ -1,12 +1,17 @@
-# Deploy resources for Lab 02
+# Module 1 Lab 2 setup - step 2
 
-## Deploy services for the lab
+To complete this lab, you will need to load some test data into the Azure Synapse Analytics workspace you set up earlier.
 
-Click the `Deploy to Azure` button below to start the deployment process.
+## Perform Custom Deploy
+
+Click the following button to open the deployment template in the Azure portal.
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fsolliancenet%2Fmicrosoft-data-engineering-ilt-deploy%2Fmain%2Fsetup%2F01%2Farm%2Fasaga-workspace-lab-02.json%3Ftoken%3DAA2FKXURSMJAZDFEIRRDZVK7Z3WVC)
 
-You should see next the `Custom deployment` screen where you need to provide the resource group where the Synapse Analytics workspace was deployed (see [Pre-requisites for deployment](./asa-workspace-deploy.md#pre-requisites-for-deployment) for details):
+You should see next the `Custom deployment` screen where you need to provide the following information:
+
+   - **Resource Group**: Provide the same resource group you used earlier to install Azure Synapse Analytics. 
+   - **Region**: Select `West Europe`.
 
 Select `Review + create` to validate the settings.
 
@@ -18,13 +23,15 @@ Once the validation is passed, select `Create` to start the deployment. You shou
 
 Wait until the deployment completes successfully before proceeding to the next step.
 
-In the Azure Portal, navigate to the resource group you used to deploy the Synapse Analytics workspace (see [Pre-requisites for deployment](./asa-workspace-deploy.md#pre-requisites-for-deployment) for details) and start a Cloud Shell instance (see [Configure the Azure Cloud Shell](#configure-the-azure-cloud-shell) above for details).
+## Load Data Into Azure Synapse Analytics
+
+In the Azure Portal, navigate to the resource group you used to deploy the Synapse Analytics workspace and start a Cloud Shell instance.
 
 Once the Cloud Shell instance becomes available, **run ```az login```** to make sure the correct account and subscription context are set:
 
 ![Cloud Shell login](media/cloudshell-setup-01.png)
 
-Run the following command to make sure the Git repository has been correctly cloned (see [Run the global setup script in Cloud Shell](./asa-workspace-deploy.md#run-the-global-setup-script-in-cloud-shell) for details):
+Run the following command to make sure the Git repository has been correctly cloned:
 
 ```cmd
 dir
@@ -42,7 +49,7 @@ and then start the setup script using
 .\lab-02-setup.ps1
 ```
 
-Make sure the selected subscription is the one that contains the resource group where you deployed the Synapse Analytics workspace:
+Make sure the selected subscription is your Azure Pass:
 
 ![Cloud Shell select subscription](media/cloudshell-setup-03.png)
 
