@@ -12,8 +12,6 @@
 
     See [further documentation](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) for more information on registering resource providers on the Azure Portal.
 
-- You'll also need a Power BI Trial, Pro or Premium account to host Power BI reports used for the lab in Module 16.
-
 ## Lab software requirements
 
 Install the following on your lab computer:
