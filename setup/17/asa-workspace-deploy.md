@@ -1,45 +1,45 @@
-# Deploy your Azure Synapse Analytics workspace
+# Module 17 Lab setup
 
-## Pre-requisites for deployment
+## Prerequisites
 
 The following requirements must be met before the deployment:
 
-- A resource group (this will be provided during the deployment process).
-
-    >**IMPORTANT**
-    >
-    >In case you didn't create the resource group yourself, make sure your account has the `Owner` role on the resource group.
-    >
-    >Also, your account (i.e. the Azure AD account used to deploy the Azure Synapse Analytics workspace) must have permissions to create new resource groups in the subscription (this is required because Synapse Analytics requires an additional resource group to keep various hidden artifacts; this resource group is created during the deployment process).
-
-- A unique suffix to be used when generating the name of the workspace. All workspaces deployed using the templates in this repo are named `asagaworkspace<unique_suffix>`, where `<unique_suffix>` gets replaced with the value you provide. Make sure the unique suffix is specific enough to avoid potential naming collisions (i.e. avoid using common values like `01`, `1`, `test`, etc.). Make sure you remember the unique suffix as you need to use it for additional configuration once the Azure Synapse Analytics workspace deployment is complete.
-- A password for the SQL admin account of the workspace. Make sure you save the password in a secure location (like a password manager) as you will need to use it later.
 - A GitHub account to access the GitHub repository.
-- A Power BI Pro subscription attached to the Azure AD account you will use to setup the Synapse Analytics workspace. In case you do not have a paid Power BI Pro subscription, you can get a 60 days trial by signing in to `https://powerbi.com` with your account and selecting `Try free`.
+- A Power BI Pro subscription. In case you do not have a paid Power BI Pro subscription, you can get a 60 days trial by signing in to `https://powerbi.com` with your account and selecting `Try free`.
 - A Power BI Pro workspace (for details about creating a workspace in Power BI, see [Create the new workspaces in Power BI](https://docs.microsoft.com/en-us/azure/synapse-analytics/quickstart-power-bi)).
 
-## Configure the Azure Cloud Shell
+## Create a Resource Group
 
->**NOTE**
->
->If Cloud Shell is already configured, you can skip this section entirely and advance to [Deploy the Synapse Analytics workspace](#deploy-the-synapse-analytics-workspace).
+In the Azure Portal, navigate to the Resource Groups overview page and create a new resource group. Give the group the following name: `techionista-dp203-m17`.
 
-In the Azure Portal, navigate to your resource group and create a new storage account to be used in the Cloud Shell configuration process (make sure the resource type you create is `Storage account`). In the newly created storage account, select `File shares` (under the `File service` settings group) and create a new file share.
+## Create a File Share
 
-Next, select the Cloud Shell icon (located in the top right part of the page) and then select `PowerShell`:
+In the Azure Portal, navigate to the `techionista-dp203-m17` resource group and create a new storage account. Provide the following information:
+
+- **Subscription**: Choose your Azure Pass subscription.
+- **Resource Group**: Select `techionista-dp203-m17`. 
+- **Region**: Select `West Europe`.
+
+Leave all other fields at their default settings and create the storage account. 
+
+When the storage account has been created, select `File shares` (under the `File service` settings group) and create a new file share named `cloud-shell-fileshare`.
+
+## Configure Azure Cloud Shell
+
+Select the Cloud Shell icon (located in the top right part of the page) and then select `PowerShell`:
 
 ![Cloud Shell configuration start](media/cloudshell-configure-01.png)
 
-Select your subscription under `Subscription` if it's not already selected, and then select `Show advanced settings`:
+Select your Azure Pass subscription under `Subscription` if it's not already selected, and then select `Show advanced settings`:
 
 ![Cloud Shell configuration advanced settings](media/cloudshell-configure-02.png)
 
 Provide values for the following fields:
 
-- **Cloud Shell region**: the same region as the region of your resource group.
-- **Resource group**: select `Use existing` and then select you resource group from the list.
+- **Cloud Shell region**: select `West Europe`.
+- **Resource group**: select `Use existing` and then select `techionista-dp203-m17` from the list.
 - **Storage account**: select `Use existing` and then select the storage account you created above.
-- **File share**: select `Use existing` and then select the file share you created above.
+- **File share**: select `Use existing` and then select the `cloud-shell-fileshare` file share you created above.
 
 Select `Attach storage` once all the values are in place.
 
@@ -49,17 +49,17 @@ Once configuration is complete, you should get an instance of Cloud Shell:
 
 ![Cloud Shell](media/cloudshell-configure-04.png)
 
-## Deploy the Synapse Analytics workspace
+## Deploy Synapse Analytics
 
 Click the `Deploy to Azure` button below to start the deployment process.
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fsolliancenet%2Fmicrosoft-data-engineering-ilt-deploy%2Fmain%2Fsetup%2F01%2Farm%2Fasaga-workspace-core.json%3Ftoken%3DAA2FKXRAGLJK2Q5PS7UV6QC7ZZAS2)
 
-You should see next the `Custom deployment` screen where you need to provide the following (see [Pre-requisites for deployment](#pre-requisites-for-deployment) above for details):
+You should see next the `Custom deployment` screen where you need to provide the following:
 
-- The resource group where the Synapse Analytics workspace will be deployed.
-- The unique suffix used to generate the name of the workspace (**NOTE**: Make sure this value has a **maximum** length of **9 characters**).
-- The password for the SQL Administrator account.
+- The resource group `techionista-dp203-m17` where the Synapse Analytics workspace will be deployed.
+- A unique suffix used to generate unique names during deployment. Type a combination of your initials and the current date (for example `mdf1708`), but make sure your suffix does not exceed a **maximum** length of **9 characters**). Remember this suffix because you will need it later.
+- The password for the SQL Administrator account. Type a unique password and remember it because you will need it during the labs.
 
 Select `Review + create` to validate the settings.
 
@@ -73,35 +73,29 @@ Wait until the deployment completes successfully before proceeding to the next s
 
 ## Tag your resource group with the unique suffix
 
-In the Azure Portal, navigate to the resource group you used to deploy the Synapse Analytics workspace (see [Pre-requisites for deployment](#pre-requisites-for-deployment) above for details).
+In the Azure Portal, navigate to the `techionista-dp203-m17` resource group.
 
-Select the `Tags` section and add a new tag named `DeploymentId`. Use the unique suffix as the value of the tag and then select `Apply` to save it.
+Select the `Tags` section and add a new tag named `DeploymentId`. Copy the unique suffix you used earlier (for example: `mdf1708`) and paste it as the value of the tag. Then select `Apply` to save it.
 
 ![Synapse Analytics workspace resource group tagging](media/asaworkspace-deploy-tag.png)
 
 The deployment of your Synapse Analytics workspace is now complete. Next, you will deploy the artifacts required by the labs into the newly created Synapse Analytics workspace.
 
-## Run the global setup script in Cloud Shell
+## Clone a GitHub repo in Cloud Shell
 
-In the Azure Portal, navigate to the resource group you used to deploy the Synapse Analytics workspace (see [Pre-requisites for deployment](#pre-requisites-for-deployment) above for details) and start a Cloud Shell instance (see [Configure the Azure Cloud Shell](#configure-the-azure-cloud-shell) above for details).
+In the Azure Portal, navigate to the resource group `techionista-dp203-m17` and start a Cloud Shell instance.
 
 Once the Cloud Shell instance becomes available, **run ```az login```** to make sure the correct account and subscription context are set:
 
 ![Cloud Shell login](media/cloudshell-setup-01.png)
 
-Clone the content packs repository into the `asa` local folder using
+Run the following command:
 
 ```cmd
 git clone https://github.com/solliancenet/microsoft-data-engineering-ilt-deploy asa
 ```
 
 If GIT asks for credentials, provide your GitHub username and password.
-
->**IMPORTANT**
->
->If your GitHub account has two-factor authentication activated, you need to provide a PAT (Personal Access Token) instead your password. For more details, read the [Creating a personal access token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) section in GitHub Docs.
->
->When pasting your password or PAT into the Cloud Shell window, make sure you are familiar with the supported key combinations (Shift-INS for Windows and Cmd-V for Mac). For more details, see [Using the Azure Cloud Shell window](https://docs.microsoft.com/en-us/azure/cloud-shell/using-the-shell-window#copy-and-paste).
 
 Once the repository is successfully cloned, you shoud see a result similar to this:
 
@@ -119,11 +113,11 @@ and then start the setup script using
 .\environment-setup.ps1
 ```
 
-Make sure the selected subscription is the one that contains the resource group where you deployed the Synapse Analytics workspace:
+Make sure the selected subscription is your Azure Pass:
 
 ![Cloud Shell select subscription](media/cloudshell-setup-03.png)
 
-Enter the name of the resource group where you deployed the Synapse Analytics workspace:
+Then enter `techionista-dp203-m17`, the name of the resource group where you deployed the Synapse Analytics workspace:
 
 ![Cloud Shell select resource group](media/cloudshell-setup-04.png)
 
@@ -131,11 +125,13 @@ The setup script will now proceed to create all necessary Synapse Analytics arti
 
 The process should take 5 to 10 minutes to finish. Wait until the setup script is finished before proceeding to the next steps.
 
-## Connect the Azure Synapse Analytics workspace to your Power BI workspace
+## Connect Azure Synapse Analytics to your Power BI workspace
 
-In the Azure Portal, navigate to your resource group, open the Synapse workspace resource (should be named `asagaworkspace<unque_suffix>` where `<unique_suffix>` is the one you specified when creating the workspace), and then open Synapse Studio.
+In the Azure Portal, navigate to your `techionista-dp203-m17` resource group, open the Synapse workspace resource (which should be named `asagaworkspace<unque_suffix>` where `<unique_suffix>` is the one you specified when creating the workspace), and then open Synapse Studio.
 
-In Synapse Studio, select the `Manage` hub on the left side, select `Linked Services`, and then select `+ New` to start creating a new linked service. Select `Connect to Power BI` to start configuring the linked service (if the `Connect to Power BI` option does not show up, enter `Power BI` in the search box, select `Power BI` and then select `Continue`).
+In Synapse Studio, select the `Manage` hub on the left side, select `Linked Services`, and then select `+ New` to start creating a new linked service. Select `Connect to Power BI` to start configuring the linked service.
+
+Iif the `Connect to Power BI` option does not show up, enter `Power BI` in the search box, select `Power BI` and then select `Continue`.
 
 ![Start configuring a new Power BI linked service](media/asaworkspace-deploy-pbi-linked-service-01.png)
 
