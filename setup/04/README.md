@@ -205,8 +205,6 @@ Perform all of the steps below in your **deployment VM**:
 
 * Execute `Connect-AzAccount` and sign in to your Microsoft user account when prompted.
 
-    > [!WARNING]: You may receive the message "TenantId 'xxxxxx-xxxx-xxxx-xxxx' contains more than one active subscription. The first one will be selected for further use. You can ignore this at this point. When you execute the environment setup, you will choose the subscription in which you deployed the environment resources.
-
 * Execute `az login` and sign in to your Microsoft user account when prompted.
 
     > If you receive the following error, and have already closed and re-opened the PowerShell window, you need to restart your computer and restart the steps in this task: `The term 'az' is not recognized as the name of a cmdlet, function, script file, or operable program`.
@@ -215,11 +213,7 @@ Perform all of the steps below in your **deployment VM**:
 
 1. You will be prompted to setup your Azure PowerShell and Azure CLI context.
 
-2. If you have more than one Azure Subscription, you will be prompted to enter the name of your desired Azure Subscription. You can copy and paste the value from the list to select one. For example:
-
-    ![A subscription is copied and pasted into the text entry.](media/select-desired-subscription.png "Select desired subscription")
-
-3. Enter the name of the resource group you created at the beginning of the environment setup. This is `techionista-dp203-m4`. This will make sure automation runs against the correct environment you provisioned in Azure.
+3. Next, enter the name of the resource group you created at the beginning of the environment setup. This is `techionista-dp203-m4`. This will make sure automation runs against the correct environment you provisioned in Azure.
 
     During the execution of the automation script you may be prompted to approve installations from PS-Gallery. Please approve to proceed with the automation.
 
